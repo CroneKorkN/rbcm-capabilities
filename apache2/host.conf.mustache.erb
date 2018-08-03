@@ -1,0 +1,10 @@
+<VirtualHost *:{{port}}>
+  ServerName {{server_name}}
+  DocumentRoot {{document_root}}
+  {{options}}
+  {{#directories}}
+    <Directory {{directory}}>
+      {{options}}
+    </Directory>
+  {{/directories}}
+</VirtualHost>
