@@ -1,11 +1,15 @@
 def git_server path: nil
   path ||= "/var/git"
-  user :git, shell: "/usr/bin/git-shell", home: path
+  user :git,
+    shell: "/usr/bin/git-shell",
+    home: path
   file "/etc/systemd/system/git-daemon.service",
     template: "git-daemon.service",
     context: {
       path: path,
       group: "git"
     }
-  systemctl enable: "git-daemon"
+  systemctl enable:  "git-daemon"
+  systemctl restart: "git-daemon",
+    triggered_by: :git_server
 end
