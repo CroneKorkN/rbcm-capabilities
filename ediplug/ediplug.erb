@@ -1,0 +1,4 @@
+#!/usr/bin/ruby
+
+post_data = '<?xml version="1.0" encoding="UTF8"?><SMARTPLUG id="edimax"><CMD id="get"><NOW_POWER><Device.System.Power.NowCurrent></Device.System.Power.NowCurrent><Device.System.Power.NowPower></Device.System.Power.NowPower></NOW_POWER></CMD></SMARTPLUG>'
+puts `curl -s -X POST -u admin:<%=password%> -d '#{post_data}' http://<%=hostname%>:10000/smartplug.cgi`.scan(/>((\d+)(\.\d+)?)/)[1][0]
