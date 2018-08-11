@@ -5,7 +5,7 @@ Wants=multi-user.target
 [Service]
 ExecStart=<%=executable%>
 StandardOutput=/var/log/<%=name%>.log
-StandardError=/var/<%=name%>_error.log
+StandardError=/var/log/<%=name%>_error.log
 Restart=always
 
 [Install]
