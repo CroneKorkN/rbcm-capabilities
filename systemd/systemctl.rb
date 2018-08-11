@@ -9,7 +9,7 @@ def systemctl enable: nil, restart: nil, reload: nil, executable: nil
         },
         trigger: :daemon_reload
       run "systemctl daemon-reload",
-        triggerd_by: :daemon_reload
+        triggered_by: :daemon_reload
     end
     run "systemctl enable #{enable}.service",
       check: "systemctl is-enabled #{enable}.service"
