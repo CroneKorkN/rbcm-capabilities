@@ -1,0 +1,12 @@
+[Unit]
+Description=<%=unit%>
+Wants=multi-user.target
+
+[Service]
+ExecStart=<%=executable%>
+StandardOutput=/var/log/<%=unit%>.log
+StandardError=/var/<%=unit%>_error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
