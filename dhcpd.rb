@@ -16,7 +16,8 @@ def dhcpd!
     }"
   end
   file '/etc/dhcp/dhcpd.conf',
-    content: conf.flatten.join("\n")
+    content: conf.flatten.join("\n"),
+    trigger: :dhcp_restart
   systemctl restart: 'isc-dhcp-server',
-    triggered_by: :dhcpd
+    triggered_by: :dhcp_restart
 end
