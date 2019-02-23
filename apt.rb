@@ -2,13 +2,13 @@ def apt install: nil,
     remove: nil,
     purge: false
   if install
-    run "apt-get update",
+    run "apt-get update"
     [install].flatten.each do |pkg|
-      run "apt-get install -y #{pkg}",
+      run "DEBIAN_FRONTEND=noninteractive apt-get install -y #{pkg}",
         check: "dpkg-query -l #{pkg}"
     end
   elsif remove
-    run "apt-get remove -y #{remove} #{'--purge' if purge}",
+    run "DEBIAN_FRONTEND=noninteractive apt-get remove -y #{remove} #{'--purge' if purge}",
       check: "! dpkg-query -l #{install}"
   end
 end
