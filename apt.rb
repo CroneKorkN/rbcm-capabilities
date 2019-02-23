@@ -1,4 +1,4 @@
-def apt install:,
+def apt install: nil,
     remove: nil,
     purge: false
   if install
