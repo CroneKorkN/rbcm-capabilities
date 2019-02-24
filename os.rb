@@ -10,9 +10,6 @@ def env *ordered, **named
 end
 
 def install package_names
-  p "-----------"
-  p package_names
-  p env?
   raise "call 'os' in prior to calling '#{__method__}'" unless os?[0]
   package_names.each do |package_name|
     send env?[:package_manager], install: os_package_name(package_name)
